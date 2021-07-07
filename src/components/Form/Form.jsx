@@ -1,10 +1,13 @@
 import React from "react";
 import { useForm , Controller} from "react-hook-form";
-import RadioButton from "../FormParts/RadioGroup";
+import RadioGroup from "../FormParts/RadioGroup";
 
 const Form = (props) => {
   const { register, handleSubmit, watch, formState: { errors }, control } = useForm();
-  const onSubmit = () => props.increment(props.step+1);
+  const onSubmit = (data) => {
+    console.log(data)
+    props.increment(props.step+1)
+  };
 
   console.log(watch("example")); // watch input value by passing the name of it
 
@@ -22,12 +25,14 @@ const Form = (props) => {
           fieldState: { invalid, isTouched, isDirty, error },
           formState,
         }) => (
-          <RadioButton onChange={onChange} value={value} name={name}/>
+          <RadioGroup onChange={onChange} value={value} name={name}/>
         )}
       />
       {errors.exampleRequired && <span>This field is required</span>}
       
-      <input type="submit" />
+      <button type="submit" className="classic-button">
+        Suivant
+      </button>
     </form>
   );
 }

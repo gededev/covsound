@@ -44,6 +44,7 @@ const AudioRecorder = () =>{
             record={true}
             audioURL={recorderState.audioDetails.url}
             showUIAudio
+            hideHeader
             handleAudioStop={(data) => handleAudioStop(data)}
             handleAudioUpload={(data) => handleAudioUpload(data)}
             handleReset={() => handleReset()}
